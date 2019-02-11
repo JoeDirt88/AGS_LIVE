@@ -1,0 +1,146 @@
+﻿@model AGS.ServerAPI.View_Models.AllStats
+<style>
+    .ratio {
+        font-size: 80%;
+    }
+    .vm {
+        text-align: center;
+        vertical-align: text-bottom !important;
+    }
+</style>
+
+<div class="card bg-primary">
+    <div class="card-header">
+        <h4><i class="fas fa-chart-line"></i> Survey Statistics</h4>
+    </div>
+    <div class="card-body">
+        <div class="row match-height">
+            <div class="col-5">
+                <h6>User questions</h6>
+            </div>
+            <div class="col-7">
+                <p><i class="fas fa-dumbbell"></i> @Model.Uxs.Count</p>
+            </div>
+        </div>
+        <div class="row match-height">
+            <div class="col-5">
+                <h6>Tech questions</h6>
+            </div>
+            <div class="col-7">
+                <p><i class="fas fa-laptop"></i> @Model.Txs.Count</p>
+            </div>
+        </div>
+        <div class="row match-height">
+            <div class="col-5">
+                <h6>Average User Experience</h6>
+            </div>
+            <div class="col-4">
+                @{
+                    var averageUx = 0.0;
+                    foreach (var answer in Model.Xans.Where(ux => ux.iExperienceTypeID == 2))
+                    {
+                        averageUx += answer.iAverage;
+                    }
+                    var starsUx = 0;
+                    averageUx = Math.Round(averageUx / Model.Xans.Count(ux => ux.iExperienceTypeID == 2), 1);
+                    var upperUx = Math.Floor(averageUx);
+                    for (var i = 0; i < upperUx; i++)
+                    {
+                        starsUx++;
+                        <i class="fas fa-star"></i>
+                    }
+                    if (averageUx - upperUx > 0)
+                    {
+                        starsUx++;
+                        <i class="fas fa-star-half-alt"></i>
+                    }
+                    for (var i = 0; i < 5 - starsUx; i++)
+                    {
+                        <i class="far fa-star"></i>
+                    }
+                }
+            </div>
+            <div class="col-3">
+                <div class="row match-height">
+                    <div class="col-6 ratio vm"><p>@averageUx/5</p></div>
+                    <div class="col-6"><p>by @Model.Xans.Count(ux => ux.iExperienceTypeID == 2)</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row match-height">
+            <div class="col-5">
+                <h6>Average Tech Experience</h6>
+            </div>
+            <div class="col-4">
+                @{
+                    var averageTx = 0.0;
+                    foreach (var answer in Model.Xans.Where(ux => ux.iExperienceTypeID == 3))
+                    {
+                        averageTx += answer.iAverage;
+                    }
+                    var starsTx = 0;
+                    averageTx = Math.Round(averageTx / Model.Xans.Count(ux => ux.iExperienceTypeID == 3), 1);
+                    var upperTx = Math.Floor(averageTx);
+                    for (var i = 0; i < upperTx; i++)
+                    {
+                        starsTx++;
+                        <i class="fas fa-star"></i>
+                    }
+                    if (averageTx - upperTx > 0)
+                    {
+                        starsTx++;
+                        <i class="fas fa-star-half-alt"></i>
+                    }
+                    for (var i = 0; i < 5 - starsTx; i++)
+                    {
+                        <i class="far fa-star"></i>
+                    }
+                }
+            </div>
+            <div class="col-3">
+                <div class="row match-height">
+                    <div class="col-6 ratio vm"><p>@averageTx/5</p></div>
+                    <div class="col-6"><p>by @Model.Xans.Count(ux => ux.iExperienceTypeID == 3)</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row match-height">
+            <div class="col-5">
+                <h6>Overall Rating</h6>
+            </div>
+            <div class="col-4">
+                @{
+                    var averageAx = 0.0;
+                    foreach (var answer in Model.Xans.Where(ux => ux.iExperienceTypeID == 3 || ux.iExperienceTypeID == 2))
+                    {
+                        averageAx += answer.iAverage;
+                    }
+                    var starsAx = 0;
+                    averageAx = Math.Round(averageAx / Model.Xans.Count(ux => ux.iExperienceTypeID == 3 || ux.iExperienceTypeID == 2), 1);
+                    var upperAx = Math.Floor(averageAx);
+                    for (var i = 0; i < upperAx; i++)
+                    {
+                        starsAx++;
+                        <i class="fas fa-star"></i>
+                    }
+                    if (averageAx - upperAx > 0)
+                    {
+                        starsAx++;
+                        <i class="fas fa-star-half-alt"></i>
+                    }
+                    for (var i = 0; i < 5 - starsAx; i++)
+                    {
+                        <i class="far fa-star"></i>
+                    }
+                }
+            </div>
+            <div class="col-3">
+                <div class="row match-height">
+                    <div class="col-6 ratio vm"><p>@averageAx/5</p></div>
+                    <div class="col-6"><p>by @Model.Xans.Count(ux => ux.iExperienceTypeID == 3 || ux.iExperienceTypeID == 2)</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

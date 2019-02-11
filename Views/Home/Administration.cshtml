@@ -3,70 +3,54 @@
     ViewBag.Title = "Administration";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<body>
-    <div>
-        <table class="col-lg-12">
-            <thead>
-                <tr>
-                    <th class="col-12">
-                        <h1>
-                            Data Table Access
-                        </h1>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Client Index", "Index", "cmsClients", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Experience Answer Index", "Index", "cmsExperienceAnswers", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Experience Type Index", "Index", "cmsExperienceTypes", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Module Index", "Index", "cmsModules", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Question Index", "Index", "cmsQuestions", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Report Index", "Index", "cmsReports", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Result Index", "Index", "cmsResults", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("Tech Experience Index", "Index", "cmsTechExperiences", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("User Experience Index", "Index", "cmsUserExperiences", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-lg-6">
-                        @Html.ActionLink("User Index", "Index", "cmsUsers", null, new { @class = "btn btn-primary col-lg-6" })
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<style>
+    .btn-primary {
+        border: aliceblue;
+        border-width: 3px;
+        width: 80%
+    }
+    .hm {
+        text-align: center;
+    }
+</style>
+
+<div class="row hm">
+    <div class="col-2"></div>
+    <div class="card bg-primary col-8">
+        <div class="row match-height">
+            <div class="card-header col-12">
+                <h1>Data Table Access</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-body col-12 bg-white">
+                <div class="row mb-1 hm">
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsUsers")">User Index</a>
+                    <div class="col-2"></div>
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsClients")">Client Index</a>
+                </div>
+                <div class="row mb-1">
+                    <a class="btn btn-primary col-5" href="@Url.Action(" Index", "cmsExperienceAnswers" )">Experience Answer Index</a>
+                    <div class="col-2"></div>
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsResults")">Result Index</a>
+                </div>
+                <div class="row mb-1">
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsQuestions")">Question Index</a>
+                    <div class="col-2"></div>
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsModules")">Module Index</a>
+                </div>
+                <div class="row mb-1">
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsReports")">Report Index</a>
+                    <div class="col-2"></div>
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsTechExperiences")">Tech Experience Index</a>
+                </div>
+                <div class="row mb-1">
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsExperienceTypes")">Experience Type Index</a>
+                    <div class="col-2"></div>
+                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsUserExperiences")">User Experience Index</a>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
+    <div class="col-2"></div>
+</div>

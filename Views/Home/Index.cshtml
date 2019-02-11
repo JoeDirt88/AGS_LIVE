@@ -1,5 +1,157 @@
 ﻿@using System.Web.UI.WebControls
+@using AGS.ServerAPI.View_Models
 @{
-    ViewBag.Title = "Administrator Page";
+    ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    var db = new MedicalDBContext();
+    var allStats = new AllStats();
+    var lstClients = db.tblClients.Where(cli => cli.bIsDeleted != true).ToList();
+    var lstUsers = db.tblUsers.Where(use => use.bIsDeleted != true).ToList();
+    var lstUxs = db.tblUserExperience.Where(use => use.bIsDeleted != true).ToList();
+    var lstTxs = db.tblTechExperience.Where(use => use.bIsDeleted != true).ToList();
+    var lstXans = db.tblExperienceAnswers.Where(use => use.bIsDeleted != true).ToList();
+    var lstResults = db.tblResult.Where(use => use.bIsDeleted != true).ToList();
+
+    var lstAllClients = new List<clsClients>();
+    var lstAllUsers = new List<clsUsers>();
+    var lstAllUxs = new List<clsUserExperience>();
+    var lstAllTxs = new List<clsTechExperience>();
+    var lstAllXans = new List<clsExperienceAnswers>();
+    var lstAllResults = new List<clsResult>();
+
+
+    foreach (var client in lstClients)
+    {
+        var Client = new clsClients()
+        {
+            iClientID = client.iClientID,
+            iAddedBy = client.iAddedBy,
+            dtAddedBy = client.dtAddedBy,
+            iEditedBy = client.iEditedBy,
+            dtEditedby = client.dtEditedby,
+            bIsDeleted = client.bIsDeleted,
+            iAge = client.iAge,
+            iRoleID = client.iRoleID,
+            strClientID = client.strClientID,
+            strFirstName = client.strFirstName,
+            strLocation = client.strLocation,
+            strSex = client.strSex,
+            strSurname = client.strSurname
+        };
+        lstAllClients.Add(Client);
+    }
+    foreach (var user in lstUsers)
+    {
+        var User = new clsUsers()
+        {
+            iUserID = user.iUserID,
+            iAddedBy = user.iAddedBy,
+            dtAddedBy = user.dtAddedBy,
+            iEditedBy = user.iEditedBy,
+            dtEditedby = user.dtEditedby,
+            bIsDeleted = user.bIsDeleted,
+            iRoleID = user.iRoleID,
+            strFirstName = user.strFirstName,
+            strSurname = user.strSurname,
+            strLocation = user.strLocation,
+            strEmail = user.strEmail,
+            strPhone = user.strPhone
+
+        };
+        lstAllUsers.Add(User);
+    }
+    foreach (var uxs in lstUxs)
+    {
+        var Uxs = new clsUserExperience()
+        {
+            iUxID = uxs.iUxID,
+            iAddedBy = uxs.iAddedBy,
+            dtAddedBy = uxs.dtAddedBy,
+            iEditedBy = uxs.iEditedBy,
+            dtEditedby = uxs.dtEditedby,
+            bIsDeleted = uxs.bIsDeleted,
+            strQuestion = uxs.strQuestion,
+            strUxQuestionL = uxs.strUxQuestionL,
+            strUxQuestionR = uxs.strUxQuestionR,
+            iExperienceTypeID = uxs.iExperienceTypeID,
+            iUxQuestionM = uxs.iUxQuestionM
+        };
+        lstAllUxs.Add(Uxs);
+    }
+    foreach (var txs in lstTxs)
+    {
+        var Txs = new clsTechExperience()
+        {
+            iTxID = txs.iTxID,
+            iAddedBy = txs.iAddedBy,
+            dtAddedBy = txs.dtAddedBy,
+            iEditedBy = txs.iEditedBy,
+            dtEditedby = txs.dtEditedby,
+            bIsDeleted = txs.bIsDeleted,
+            strQuestion = txs.strQuestion,
+            strTxQuestionL = txs.strTxQuestionL,
+            strTxQuestionR = txs.strTxQuestionR,
+            iExperienceTypeID = txs.iExperienceTypeID,
+            iTxQuestionM = txs.iTxQuestionM
+        };
+        lstAllTxs.Add(Txs);
+    }
+    foreach (var xans in lstXans)
+    {
+        var Xan = new clsExperienceAnswers()
+        {
+            iExperienceAnswerID = xans.iExperienceAnswerID,
+            iAddedBy = xans.iAddedBy,
+            dtAddedBy = xans.dtAddedBy,
+            iEditedBy = xans.iEditedBy,
+            dtEditedby = xans.dtEditedby,
+            bIsDeleted = xans.bIsDeleted,
+            iExperienceTypeID = xans.iExperienceTypeID,
+            iAverage = xans.iAverage,
+            strEmail = xans.strEmail,
+            strPhone = xans.strPhone,
+            strAnswers = xans.strAnswers,
+            strOccupation = xans.strOccupation
+        };
+        lstAllXans.Add(Xan);
+    }
+    foreach (var result in lstResults)
+    {
+        var Result = new clsResult()
+        {
+            iResultID = result.iResultID,
+            iAddedBy = result.iAddedBy,
+            dtAddedBy = result.dtAddedBy,
+            iEditedBy = result.iEditedBy,
+            dtEditedby = result.dtEditedby,
+            bIsDeleted = result.bIsDeleted,
+            strClientID = result.strClientID,
+            strModID = result.strModID,
+            TestData = result.strModID,
+            Result = result.Result
+        };
+        lstAllResults.Add(Result);
+    }
+
+    allStats.Clients = lstAllClients;
+    allStats.Users = lstAllUsers;
+    allStats.Uxs = lstAllUxs;
+    allStats.Txs = lstAllTxs;
+    allStats.Xans = lstAllXans;
+    allStats.Results = lstAllResults;
+}
+
+<h1>Welcome to the home of AG Softworks</h1>
+<hr />
+<body>
+    <div class="row match-height">
+        <div class="col-6">
+            @Html.Partial("~/Views/Partials/_UserStats.cshtml", allStats)
+        </div>
+        <div class="col-6">
+            @Html.Partial("~/Views/Partials/_SurveyStats.cshtml", allStats)
+        </div>
+    </div>
+</body>

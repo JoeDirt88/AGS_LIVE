@@ -280,6 +280,7 @@
     </Compile>
     <Compile Include="Utility\PythonShort.cs" />
     <Compile Include="Utility\QueryShort.cs" />
+    <Compile Include="View_Models\AllStats.cs" />
     <Compile Include="View_Models\QuestionModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +452,8 @@
     <Content Include="Views\cmsExperienceAnswers\Details.cshtml" />
     <Content Include="Views\cmsExperienceAnswers\Edit.cshtml" />
     <Content Include="Views\cmsExperienceAnswers\Index.cshtml" />
+    <Content Include="Views\Partials\_SurveyStats.cshtml" />
+    <Content Include="Views\Partials\_UserStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/font-awesome.css")
     @Scripts.Render("~/bundles/modernizr")
@@ -13,7 +14,7 @@
     <div>
         @if ((clsUsers)Session["clsUser"] != null)
         {
-            @Html.ActionLink(" Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand btn btn-primary fa fa-sign-out float-right" })
+            @Html.ActionLink(" Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand btn btn-danger fa fa-sign-out float-right" })
             <h1 class="container navbar-header">Administration</h1>
             <hr />
         }
