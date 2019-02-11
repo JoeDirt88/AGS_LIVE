@@ -21,7 +21,7 @@ namespace AGS.ServerAPI.Controllers
             if (portManager.ip != null && portManager.port != null)
             {
                 var json = JsonConvert.SerializeObject(portManager);
-                System.IO.File.WriteAllText(@"../../ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
+                System.IO.File.WriteAllText(@"c:/ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
             }
             return View(portManager);
         }
@@ -33,7 +33,7 @@ namespace AGS.ServerAPI.Controllers
             if (portManager.ip != null && portManager.port != null)
             {
                 var json = JsonConvert.SerializeObject(portManager);
-                System.IO.File.WriteAllText(@"../../ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
+                System.IO.File.WriteAllText(@"c:/ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
             }
             return RedirectToAction("Administration","Home",portManager);
         }

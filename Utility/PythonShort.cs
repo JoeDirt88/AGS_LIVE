@@ -26,7 +26,7 @@ namespace AGS.ServerAPI.Utility
         public static string Route(string controller)
         {
             var item = new PortManager();
-            using (var r = new StreamReader(@"../../ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json"))
+            using (var r = new StreamReader(@"c:/ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json"))
             {
                 var json = r.ReadToEnd();
                 item = JsonConvert.DeserializeObject<PortManager>(json);
