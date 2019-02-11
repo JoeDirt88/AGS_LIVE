@@ -24,6 +24,7 @@ namespace AGS.ServerAPI.Controllers
             }
             return View(clsUser);
         }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(clsUsers clsUser)
@@ -43,14 +44,14 @@ namespace AGS.ServerAPI.Controllers
                 if (clsCurrentUser == null)
                 {
                     ModelState.AddModelError("loginError", "Incorrect Login Credentials Entered");
-                    clsCurrentUser.strPhone = "";
+                    clsCurrentUser.strPhone = string.Empty;
                     return View(clsCurrentUser);
                 }
                 //If password is incorrect
                 if (clsCurrentUser.strPhone != clsUser.strPhone)
                 {
                     ModelState.AddModelError("loginError", "Incorrect Login Credentials Entered");
-                    clsCurrentUser.strPhone = "";
+                    clsCurrentUser.strPhone = string.Empty;
                     return View(clsCurrentUser);
                 }
                 else
@@ -69,6 +70,7 @@ namespace AGS.ServerAPI.Controllers
                 }
             }
         }
+
         public ActionResult Logout()
         {
             Session.Remove("clsUser");

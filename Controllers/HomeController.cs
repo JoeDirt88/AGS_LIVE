@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using AGS.ServerAPI.Models;
+using AGS.ServerAPI.Model_Managers;
+using Newtonsoft.Json;
 
 namespace AGS.ServerAPI.Controllers
 {
@@ -10,11 +14,28 @@ namespace AGS.ServerAPI.Controllers
 
             return View();
         }
-        public ActionResult Administration()
+
+        public ActionResult Administration(PortManager portManager)
         {
             ViewBag.Title = "Administration Page";
+            if (portManager.ip != null && portManager.port != null)
+            {
+                var json = JsonConvert.SerializeObject(portManager);
+                System.IO.File.WriteAllText(@"../../ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
+            }
+            return View(portManager);
+        }
 
-            return View();
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Administrate(PortManager portManager)
+        {
+            if (portManager.ip != null && portManager.port != null)
+            {
+                var json = JsonConvert.SerializeObject(portManager);
+                System.IO.File.WriteAllText(@"../../ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
+            }
+            return RedirectToAction("Administration","Home",portManager);
         }
     }
 }

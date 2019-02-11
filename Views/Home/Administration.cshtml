@@ -1,4 +1,8 @@
-﻿
+﻿@model AGS.ServerAPI.Models.PortManager
+
+@using AGS.ServerAPI.Models
+@using Newtonsoft.Json
+
 @{
     ViewBag.Title = "Administration";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -9,48 +13,122 @@
         border-width: 3px;
         width: 80%
     }
+
     .hm {
         text-align: center;
     }
 </style>
+@{
+    var user = (clsUsers)Session["clsUser"];
+    if (user.strEmail == "wp@swart.co.za")
+    {
+        var item = new PortManager();
+        if (Model.port == null || Model.ip == null)
+        {
+            using (var r = new StreamReader(@"../../ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json"))
+            {
+                var json = r.ReadToEnd();
+                item = JsonConvert.DeserializeObject<PortManager>(json);
+            }
+        }
+        else
+        {
+            item = Model;
+        }
+        <div class="row hm">
+            <div class="col-2"></div>
+            <div class="card bg-primary col-8">
+                <div class="row match-height">
+                    <div class="card-header col-12">
+                        <h1>IP/Domain and Port editor</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body col-12 bg-white">
+                        <div class="row mb-1 hm match-height">
+                            <div class="col-6">
+                                <h6>Current IP/Domain: @item.ip</h6>
+                            </div>
+                            <div class="col-6">
+                                <h6>Current Port: @item.port</h6>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("Administrate", "Home", FormMethod.Post, new { @id = "frmPortManager", @name = "frmPortManager" }))
+                        {
+                            <div class="row mb-1 hm match-height">
+                                <div class="col-6">
+                                    <label for="IP">IP/Domain</label>
+                                </div>
+                                <div class="col-6">
+                                    @Html.EditorFor(pman => pman.ip, item.ip, new { htmlAttributes = new { @class = "form-control", @Value = @item.ip } })
+                                </div>
+                            </div>
+                            <div class="row mb-1 hm match-height">
+                                <div class="col-6">
+                                    <label for="port" style="margin-bottom: 0px">Port</label>
+                                </div>
+                                <div class="col-6">
+                                    @Html.EditorFor(pman => pman.port, item.port, new { htmlAttributes = new { @class = "form-control", @Value= @item.port } })
 
-<div class="row hm">
-    <div class="col-2"></div>
-    <div class="card bg-primary col-8">
-        <div class="row match-height">
-            <div class="card-header col-12">
-                <h1>Data Table Access</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card-body col-12 bg-white">
-                <div class="row mb-1 hm">
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsUsers")">User Index</a>
-                    <div class="col-2"></div>
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsClients")">Client Index</a>
-                </div>
-                <div class="row mb-1">
-                    <a class="btn btn-primary col-5" href="@Url.Action(" Index", "cmsExperienceAnswers" )">Experience Answer Index</a>
-                    <div class="col-2"></div>
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsResults")">Result Index</a>
-                </div>
-                <div class="row mb-1">
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsQuestions")">Question Index</a>
-                    <div class="col-2"></div>
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsModules")">Module Index</a>
-                </div>
-                <div class="row mb-1">
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsReports")">Report Index</a>
-                    <div class="col-2"></div>
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsTechExperiences")">Tech Experience Index</a>
-                </div>
-                <div class="row mb-1">
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsExperienceTypes")">Experience Type Index</a>
-                    <div class="col-2"></div>
-                    <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsUserExperiences")">User Experience Index</a>
+                                </div>
+                            </div>
+                            <div class="form-fields">
+                                <div class="col-12">
+                                    <p>
+                                        <button type="submit" class="btn btn-primary col-md-6">
+                                            Save <i class="fa fa-save" style="color: aliceblue"></i>
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
+            <div class="col-2"></div>
         </div>
-    </div>
-    <div class="col-2"></div>
-</div>
+    }
+    else
+    {
+        <div class="row hm">
+            <div class="col-2"></div>
+            <div class="card bg-primary col-8">
+                <div class="row match-height">
+                    <div class="card-header col-12">
+                        <h1>Data Table Access</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body col-12 bg-white">
+                        <div class="row mb-1 hm">
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsUsers")">User Index</a>
+                            <div class="col-2"></div>
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsClients")">Client Index</a>
+                        </div>
+                        <div class="row mb-1">
+                            <a class="btn btn-primary col-5" href="@Url.Action(" Index", "cmsExperienceAnswers" )">Experience Answer Index</a>
+                            <div class="col-2"></div>
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsResults")">Result Index</a>
+                        </div>
+                        <div class="row mb-1">
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsQuestions")">Question Index</a>
+                            <div class="col-2"></div>
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsModules")">Module Index</a>
+                        </div>
+                        <div class="row mb-1">
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsReports")">Report Index</a>
+                            <div class="col-2"></div>
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsTechExperiences")">Tech Experience Index</a>
+                        </div>
+                        <div class="row mb-1">
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsExperienceTypes")">Experience Type Index</a>
+                            <div class="col-2"></div>
+                            <a class="btn btn-primary col-5" href="@Url.Action("Index", "cmsUserExperiences")">User Experience Index</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    }
+}
