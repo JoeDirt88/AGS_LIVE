@@ -1,0 +1,83 @@
+﻿@model AGS.ServerAPI.tblReports
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblReports</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.iAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtEditedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtEditedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strReport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strReport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strContactNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strContactNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bIsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bIsDeleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iReportID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

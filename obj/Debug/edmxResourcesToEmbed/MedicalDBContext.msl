@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MedicalDBContext">
+    <EntitySetMapping Name="tblClients">
+      <EntityTypeMapping TypeName="Model.tblClients">
+        <MappingFragment StoreEntitySet="tblClients">
+          <ScalarProperty Name="iClientID" ColumnName="iClientID" />
+          <ScalarProperty Name="strClientID" ColumnName="strClientID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strFirstName" ColumnName="strFirstName" />
+          <ScalarProperty Name="strSurname" ColumnName="strSurname" />
+          <ScalarProperty Name="iAge" ColumnName="iAge" />
+          <ScalarProperty Name="strSex" ColumnName="strSex" />
+          <ScalarProperty Name="strLocation" ColumnName="strLocation" />
+          <ScalarProperty Name="iRoleID" ColumnName="iRoleID" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblExperienceAnswers">
+      <EntityTypeMapping TypeName="Model.tblExperienceAnswers">
+        <MappingFragment StoreEntitySet="tblExperienceAnswers">
+          <ScalarProperty Name="iExperienceAnswerID" ColumnName="iExperienceAnswerID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strEmail" ColumnName="strEmail" />
+          <ScalarProperty Name="strPhone" ColumnName="strPhone" />
+          <ScalarProperty Name="strOccupation" ColumnName="strOccupation" />
+          <ScalarProperty Name="iExperienceTypeID" ColumnName="iExperienceTypeID" />
+          <ScalarProperty Name="strAnswers" ColumnName="strAnswers" />
+          <ScalarProperty Name="iAverage" ColumnName="iAverage" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblExperienceTypes">
+      <EntityTypeMapping TypeName="Model.tblExperienceTypes">
+        <MappingFragment StoreEntitySet="tblExperienceTypes">
+          <ScalarProperty Name="iExperienceTypeID" ColumnName="iExperienceTypeID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strExperienceTitle" ColumnName="strExperienceTitle" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblModules">
+      <EntityTypeMapping TypeName="Model.tblModules">
+        <MappingFragment StoreEntitySet="tblModules">
+          <ScalarProperty Name="strModID" ColumnName="strModID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strModName" ColumnName="strModName" />
+          <ScalarProperty Name="strModDescription" ColumnName="strModDescription" />
+          <ScalarProperty Name="bModStatus" ColumnName="bModStatus" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuestions">
+      <EntityTypeMapping TypeName="Model.tblQuestions">
+        <MappingFragment StoreEntitySet="tblQuestions">
+          <ScalarProperty Name="iQuestionID" ColumnName="iQuestionID" />
+          <ScalarProperty Name="strQuestionID" ColumnName="strQuestionID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strQuestion" ColumnName="strQuestion" />
+          <ScalarProperty Name="strFlavourText" ColumnName="strFlavourText" />
+          <ScalarProperty Name="strSignificance" ColumnName="strSignificance" />
+          <ScalarProperty Name="strUnit" ColumnName="strUnit" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblReports">
+      <EntityTypeMapping TypeName="Model.tblReports">
+        <MappingFragment StoreEntitySet="tblReports">
+          <ScalarProperty Name="iReportID" ColumnName="iReportID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strReport" ColumnName="strReport" />
+          <ScalarProperty Name="strEmail" ColumnName="strEmail" />
+          <ScalarProperty Name="strContactNumber" ColumnName="strContactNumber" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblResult">
+      <EntityTypeMapping TypeName="Model.tblResult">
+        <MappingFragment StoreEntitySet="tblResult">
+          <ScalarProperty Name="iResultID" ColumnName="iResultID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strClientID" ColumnName="strClientID" />
+          <ScalarProperty Name="strModID" ColumnName="strModID" />
+          <ScalarProperty Name="TestData" ColumnName="TestData" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTechExperience">
+      <EntityTypeMapping TypeName="Model.tblTechExperience">
+        <MappingFragment StoreEntitySet="tblTechExperience">
+          <ScalarProperty Name="iTxID" ColumnName="iTxID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="iExperienceTypeID" ColumnName="iExperienceTypeID" />
+          <ScalarProperty Name="strQuestion" ColumnName="strQuestion" />
+          <ScalarProperty Name="strTxQuestionL" ColumnName="strTxQuestionL" />
+          <ScalarProperty Name="iTxQuestionM" ColumnName="iTxQuestionM" />
+          <ScalarProperty Name="strTxQuestionR" ColumnName="strTxQuestionR" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserExperience">
+      <EntityTypeMapping TypeName="Model.tblUserExperience">
+        <MappingFragment StoreEntitySet="tblUserExperience">
+          <ScalarProperty Name="iUxID" ColumnName="iUxID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="iExperienceTypeID" ColumnName="iExperienceTypeID" />
+          <ScalarProperty Name="strQuestion" ColumnName="strQuestion" />
+          <ScalarProperty Name="strUxQuestionL" ColumnName="strUxQuestionL" />
+          <ScalarProperty Name="iUxQuestionM" ColumnName="iUxQuestionM" />
+          <ScalarProperty Name="strUxQuestionR" ColumnName="strUxQuestionR" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="Model.tblUsers">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="iUserID" ColumnName="iUserID" />
+          <ScalarProperty Name="iAddedBy" ColumnName="iAddedBy" />
+          <ScalarProperty Name="dtAddedBy" ColumnName="dtAddedBy" />
+          <ScalarProperty Name="iEditedBy" ColumnName="iEditedBy" />
+          <ScalarProperty Name="dtEditedby" ColumnName="dtEditedby" />
+          <ScalarProperty Name="strFirstName" ColumnName="strFirstName" />
+          <ScalarProperty Name="strSurname" ColumnName="strSurname" />
+          <ScalarProperty Name="strEmail" ColumnName="strEmail" />
+          <ScalarProperty Name="strPhone" ColumnName="strPhone" />
+          <ScalarProperty Name="strLocation" ColumnName="strLocation" />
+          <ScalarProperty Name="iRoleID" ColumnName="iRoleID" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

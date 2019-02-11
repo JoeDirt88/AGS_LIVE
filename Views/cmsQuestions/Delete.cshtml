@@ -1,0 +1,105 @@
+﻿@model AGS.ServerAPI.tblQuestions
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblQuestions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.strQuestionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strQuestionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtEditedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtEditedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strFlavourText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strFlavourText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strSignificance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strSignificance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bIsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bIsDeleted)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

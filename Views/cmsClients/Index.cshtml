@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AGS.ServerAPI.tblClients>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Clients</h2>
+
+<div>
+    <p>
+        @Html.ActionLink(" Create new", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+    </p>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.strClientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strSex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iRoleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bIsDeleted)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.strClientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strSex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iRoleID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bIsDeleted)
+            </td>
+            <td  class="col-md-3">
+                @Html.ActionLink(" ", "Edit", new { id = item.iClientID }, new { @class = "btn fa fa-pencil" })
+                @Html.ActionLink(" ", "Details", new { id = item.iClientID }, new { @class = "btn fa fa-book" })
+                @Html.ActionLink(" ", "Delete", new { id = item.iClientID }, new { @class = "btn fa fa-trash" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />
+<div>
+    <a href="@Url.Action("Administration","Home")" class="btn btn-primary col-md-3">
+        Return to Admin
+    </a>
+</div>

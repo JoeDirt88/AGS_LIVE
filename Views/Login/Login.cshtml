@@ -1,0 +1,66 @@
+﻿@model AGS.ServerAPI.clsUsers
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Account Area Start -->
+<div class="my-account-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @id = "frmUserLogin", @name = "frmUserLogin" }))
+                {
+                    <div class="form-fields">
+                        <h2>Login</h2>
+
+                        @ViewBag.Message
+
+                        <p>
+                            <label for="login-name" class="important">Email</label>
+                            @Html.EditorFor(userlogin => userlogin.strEmail, new { htmlAttributes = new { @required = "required", @class = "form-control" } })
+                            @Html.ValidationMessageFor(userlogin => userlogin.strEmail, null, new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            <label for="loginPassword" class="important" style="margin-bottom:0px">Phone Number</label>
+                            <div class="input-group" id="show_hide_password_login">
+                                @Html.EditorFor(userlogin => userlogin.strPhone, new { htmlAttributes = new { @id = "loginPassword", @required = "required", @class = "form-control" } })
+                                <div class="input-group-addon psw-show"><a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a></div>
+                            </div>
+                            @Html.ValidationMessageFor(userlogin => userlogin.strPhone, null, new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            <button type="submit" class="btn btn-primary float-left col-md-6">
+                                Login <i class="fa fa-sign-in" style="color: aliceblue"></i>
+                            </button>
+                        </p>
+                        @Html.ValidationMessage("loginError", new { @class = "text-danger" })
+                    </div>
+                }
+                <div></div>
+                <br/>
+                <div>
+                <br/>
+                    <a href="/Home/Index" class="btn btn-primary col-md-6">Home  <i class="fa fa-home" style="color: aliceblue"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#show_hide_password_login a").on('click', function (event) {
+            event.preventDefault();
+            if ($('#show_hide_password_login input').attr("type") == "text") {
+                $('#show_hide_password_login input').attr('type', 'password');
+                $('#show_hide_password_login i').addClass("fa-eye-slash");
+                $('#show_hide_password_login i').removeClass("fa-eye");
+            } else if ($('#show_hide_password_login input').attr("type") == "password") {
+                $('#show_hide_password_login input').attr('type', 'text');
+                $('#show_hide_password_login i').removeClass("fa-eye-slash");
+                $('#show_hide_password_login i').addClass("fa-eye");
+            }
+        });
+    });
+</script>
+<!-- Account Area End -->

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblClients">
+    <Key>
+      <PropertyRef Name="iClientID" />
+    </Key>
+    <Property Name="iClientID" Type="Int32" Nullable="false" />
+    <Property Name="strClientID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iAge" Type="Int32" Nullable="false" />
+    <Property Name="strSex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="iRoleID" Type="Int32" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblExperienceAnswers">
+    <Key>
+      <PropertyRef Name="iExperienceAnswerID" />
+    </Key>
+    <Property Name="iExperienceAnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="strOccupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="iExperienceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="strAnswers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iAverage" Type="Double" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblExperienceTypes" Relationship="Self.FK_tblExperienceAnswers_tblExperienceTypes" FromRole="tblExperienceAnswers" ToRole="tblExperienceTypes" />
+  </EntityType>
+  <EntityType Name="tblExperienceTypes">
+    <Key>
+      <PropertyRef Name="iExperienceTypeID" />
+    </Key>
+    <Property Name="iExperienceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strExperienceTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblExperienceAnswers" Relationship="Self.FK_tblExperienceAnswers_tblExperienceTypes" FromRole="tblExperienceTypes" ToRole="tblExperienceAnswers" />
+    <NavigationProperty Name="tblTechExperience" Relationship="Self.FK_tblTechExperience_tblExperienceTypes" FromRole="tblExperienceTypes" ToRole="tblTechExperience" />
+    <NavigationProperty Name="tblUserExperience" Relationship="Self.FK_tblUserExperience_tblExperienceTypes" FromRole="tblExperienceTypes" ToRole="tblUserExperience" />
+  </EntityType>
+  <EntityType Name="tblModules">
+    <Key>
+      <PropertyRef Name="strModID" />
+    </Key>
+    <Property Name="strModID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strModName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strModDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bModStatus" Type="Boolean" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblResult" Relationship="Self.FK_tblResult_tblModules" FromRole="tblModules" ToRole="tblResult" />
+  </EntityType>
+  <EntityType Name="tblQuestions">
+    <Key>
+      <PropertyRef Name="iQuestionID" />
+    </Key>
+    <Property Name="iQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strQuestionID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strFlavourText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="strSignificance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblReports">
+    <Key>
+      <PropertyRef Name="iReportID" />
+    </Key>
+    <Property Name="iReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strReport" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strContactNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblResult">
+    <Key>
+      <PropertyRef Name="iResultID" />
+    </Key>
+    <Property Name="iResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strClientID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strModID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TestData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblModules" Relationship="Self.FK_tblResult_tblModules" FromRole="tblResult" ToRole="tblModules" />
+  </EntityType>
+  <EntityType Name="tblTechExperience">
+    <Key>
+      <PropertyRef Name="iTxID" />
+    </Key>
+    <Property Name="iTxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="iExperienceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="strQuestion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strTxQuestionL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iTxQuestionM" Type="Int32" Nullable="false" />
+    <Property Name="strTxQuestionR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblExperienceTypes" Relationship="Self.FK_tblTechExperience_tblExperienceTypes" FromRole="tblTechExperience" ToRole="tblExperienceTypes" />
+  </EntityType>
+  <EntityType Name="tblUserExperience">
+    <Key>
+      <PropertyRef Name="iUxID" />
+    </Key>
+    <Property Name="iUxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="iExperienceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="strQuestion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strUxQuestionL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="iUxQuestionM" Type="Int32" Nullable="false" />
+    <Property Name="strUxQuestionR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblExperienceTypes" Relationship="Self.FK_tblUserExperience_tblExperienceTypes" FromRole="tblUserExperience" ToRole="tblExperienceTypes" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="iUserID" />
+    </Key>
+    <Property Name="iUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iAddedBy" Type="Int32" />
+    <Property Name="dtAddedBy" Type="DateTime" Precision="3" />
+    <Property Name="iEditedBy" Type="Int32" />
+    <Property Name="dtEditedby" Type="DateTime" Precision="3" />
+    <Property Name="strFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="iRoleID" Type="Int32" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblExperienceAnswers_tblExperienceTypes">
+    <End Role="tblExperienceTypes" Type="Self.tblExperienceTypes" Multiplicity="1" />
+    <End Role="tblExperienceAnswers" Type="Self.tblExperienceAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExperienceTypes">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Principal>
+      <Dependent Role="tblExperienceAnswers">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTechExperience_tblExperienceTypes">
+    <End Role="tblExperienceTypes" Type="Self.tblExperienceTypes" Multiplicity="1" />
+    <End Role="tblTechExperience" Type="Self.tblTechExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExperienceTypes">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Principal>
+      <Dependent Role="tblTechExperience">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserExperience_tblExperienceTypes">
+    <End Role="tblExperienceTypes" Type="Self.tblExperienceTypes" Multiplicity="1" />
+    <End Role="tblUserExperience" Type="Self.tblUserExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExperienceTypes">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Principal>
+      <Dependent Role="tblUserExperience">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblResult_tblModules">
+    <End Role="tblModules" Type="Self.tblModules" Multiplicity="1" />
+    <End Role="tblResult" Type="Self.tblResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblModules">
+        <PropertyRef Name="strModID" />
+      </Principal>
+      <Dependent Role="tblResult">
+        <PropertyRef Name="strModID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MedicalDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblClients" EntityType="Self.tblClients" />
+    <EntitySet Name="tblExperienceAnswers" EntityType="Self.tblExperienceAnswers" />
+    <EntitySet Name="tblExperienceTypes" EntityType="Self.tblExperienceTypes" />
+    <EntitySet Name="tblModules" EntityType="Self.tblModules" />
+    <EntitySet Name="tblQuestions" EntityType="Self.tblQuestions" />
+    <EntitySet Name="tblReports" EntityType="Self.tblReports" />
+    <EntitySet Name="tblResult" EntityType="Self.tblResult" />
+    <EntitySet Name="tblTechExperience" EntityType="Self.tblTechExperience" />
+    <EntitySet Name="tblUserExperience" EntityType="Self.tblUserExperience" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" />
+    <AssociationSet Name="FK_tblExperienceAnswers_tblExperienceTypes" Association="Self.FK_tblExperienceAnswers_tblExperienceTypes">
+      <End Role="tblExperienceTypes" EntitySet="tblExperienceTypes" />
+      <End Role="tblExperienceAnswers" EntitySet="tblExperienceAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTechExperience_tblExperienceTypes" Association="Self.FK_tblTechExperience_tblExperienceTypes">
+      <End Role="tblExperienceTypes" EntitySet="tblExperienceTypes" />
+      <End Role="tblTechExperience" EntitySet="tblTechExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserExperience_tblExperienceTypes" Association="Self.FK_tblUserExperience_tblExperienceTypes">
+      <End Role="tblExperienceTypes" EntitySet="tblExperienceTypes" />
+      <End Role="tblUserExperience" EntitySet="tblUserExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblResult_tblModules" Association="Self.FK_tblResult_tblModules">
+      <End Role="tblModules" EntitySet="tblModules" />
+      <End Role="tblResult" EntitySet="tblResult" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

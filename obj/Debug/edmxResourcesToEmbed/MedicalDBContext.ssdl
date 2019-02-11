@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblClients">
+    <Key>
+      <PropertyRef Name="iClientID" />
+    </Key>
+    <Property Name="iClientID" Type="int" Nullable="false" />
+    <Property Name="strClientID" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strSurname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="iAge" Type="int" Nullable="false" />
+    <Property Name="strSex" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strLocation" Type="varchar" MaxLength="50" />
+    <Property Name="iRoleID" Type="int" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblExperienceAnswers">
+    <Key>
+      <PropertyRef Name="iExperienceAnswerID" />
+    </Key>
+    <Property Name="iExperienceAnswerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strEmail" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="strPhone" Type="varchar" MaxLength="10" />
+    <Property Name="strOccupation" Type="varchar" MaxLength="50" />
+    <Property Name="iExperienceTypeID" Type="int" Nullable="false" />
+    <Property Name="strAnswers" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="iAverage" Type="float" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblExperienceTypes">
+    <Key>
+      <PropertyRef Name="iExperienceTypeID" />
+    </Key>
+    <Property Name="iExperienceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strExperienceTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblModules">
+    <Key>
+      <PropertyRef Name="strModID" />
+    </Key>
+    <Property Name="strModID" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strModName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strModDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bModStatus" Type="bit" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblQuestions">
+    <Key>
+      <PropertyRef Name="iQuestionID" />
+    </Key>
+    <Property Name="iQuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strQuestionID" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strQuestion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strFlavourText" Type="varchar" MaxLength="50" />
+    <Property Name="strSignificance" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strUnit" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblReports">
+    <Key>
+      <PropertyRef Name="iReportID" />
+    </Key>
+    <Property Name="iReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strReport" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="strEmail" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="strContactNumber" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblResult">
+    <Key>
+      <PropertyRef Name="iResultID" />
+    </Key>
+    <Property Name="iResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strClientID" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="strModID" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="TestData" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Result" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTechExperience">
+    <Key>
+      <PropertyRef Name="iTxID" />
+    </Key>
+    <Property Name="iTxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="iExperienceTypeID" Type="int" Nullable="false" />
+    <Property Name="strQuestion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="strTxQuestionL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="iTxQuestionM" Type="int" Nullable="false" />
+    <Property Name="strTxQuestionR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUserExperience">
+    <Key>
+      <PropertyRef Name="iUxID" />
+    </Key>
+    <Property Name="iUxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="iExperienceTypeID" Type="int" Nullable="false" />
+    <Property Name="strQuestion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="strUxQuestionL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="iUxQuestionM" Type="int" Nullable="false" />
+    <Property Name="strUxQuestionR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="iUserID" />
+    </Key>
+    <Property Name="iUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iAddedBy" Type="int" />
+    <Property Name="dtAddedBy" Type="datetime" />
+    <Property Name="iEditedBy" Type="int" />
+    <Property Name="dtEditedby" Type="datetime" />
+    <Property Name="strFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strSurname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strEmail" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="strPhone" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="strLocation" Type="varchar" MaxLength="50" />
+    <Property Name="iRoleID" Type="int" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblExperienceAnswers_tblExperienceTypes">
+    <End Role="tblExperienceTypes" Type="Self.tblExperienceTypes" Multiplicity="1" />
+    <End Role="tblExperienceAnswers" Type="Self.tblExperienceAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExperienceTypes">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Principal>
+      <Dependent Role="tblExperienceAnswers">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblResult_tblModules">
+    <End Role="tblModules" Type="Self.tblModules" Multiplicity="1" />
+    <End Role="tblResult" Type="Self.tblResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblModules">
+        <PropertyRef Name="strModID" />
+      </Principal>
+      <Dependent Role="tblResult">
+        <PropertyRef Name="strModID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTechExperience_tblExperienceTypes">
+    <End Role="tblExperienceTypes" Type="Self.tblExperienceTypes" Multiplicity="1" />
+    <End Role="tblTechExperience" Type="Self.tblTechExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExperienceTypes">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Principal>
+      <Dependent Role="tblTechExperience">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserExperience_tblExperienceTypes">
+    <End Role="tblExperienceTypes" Type="Self.tblExperienceTypes" Multiplicity="1" />
+    <End Role="tblUserExperience" Type="Self.tblUserExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExperienceTypes">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Principal>
+      <Dependent Role="tblUserExperience">
+        <PropertyRef Name="iExperienceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="tblClients" EntityType="Self.tblClients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExperienceAnswers" EntityType="Self.tblExperienceAnswers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExperienceTypes" EntityType="Self.tblExperienceTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblModules" EntityType="Self.tblModules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblQuestions" EntityType="Self.tblQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblReports" EntityType="Self.tblReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblResult" EntityType="Self.tblResult" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTechExperience" EntityType="Self.tblTechExperience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserExperience" EntityType="Self.tblUserExperience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblExperienceAnswers_tblExperienceTypes" Association="Self.FK_tblExperienceAnswers_tblExperienceTypes">
+      <End Role="tblExperienceTypes" EntitySet="tblExperienceTypes" />
+      <End Role="tblExperienceAnswers" EntitySet="tblExperienceAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblResult_tblModules" Association="Self.FK_tblResult_tblModules">
+      <End Role="tblModules" EntitySet="tblModules" />
+      <End Role="tblResult" EntitySet="tblResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTechExperience_tblExperienceTypes" Association="Self.FK_tblTechExperience_tblExperienceTypes">
+      <End Role="tblExperienceTypes" EntitySet="tblExperienceTypes" />
+      <End Role="tblTechExperience" EntitySet="tblTechExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserExperience_tblExperienceTypes" Association="Self.FK_tblUserExperience_tblExperienceTypes">
+      <End Role="tblExperienceTypes" EntitySet="tblExperienceTypes" />
+      <End Role="tblUserExperience" EntitySet="tblUserExperience" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,83 @@
+﻿@model AGS.ServerAPI.tblModules
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblModules</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.iAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtEditedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtEditedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strModName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strModName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strModDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strModDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bModStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bModStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bIsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bIsDeleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.strModID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

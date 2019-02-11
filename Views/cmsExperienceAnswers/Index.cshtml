@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AGS.ServerAPI.tblExperienceAnswers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Experience Answers</h2>
+
+<div>
+    <p>
+        @Html.ActionLink(" Create new", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+    </p>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.strEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strOccupation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strAnswers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iAverage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bIsDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblExperienceTypes.strExperienceTitle)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.strEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strOccupation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strAnswers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iAverage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bIsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblExperienceTypes.strExperienceTitle)
+            </td>
+            <td class="col-md-3">
+                @Html.ActionLink(" ", "Edit", new { id = item.iExperienceAnswerID }, new { @class = "btn fa fa-pencil" })
+                @Html.ActionLink(" ", "Details", new { id = item.iExperienceAnswerID }, new { @class = "btn fa fa-book" })
+                @Html.ActionLink(" ", "Delete", new { id = item.iExperienceAnswerID }, new { @class = "btn fa fa-trash" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />
+<div>
+    <a href="@Url.Action("Administration","Home")" class="btn btn-primary col-md-3">
+        Return to Admin
+    </a>
+</div>

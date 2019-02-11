@@ -1,0 +1,99 @@
+﻿@model AGS.ServerAPI.tblQuestions
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblQuestions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.strQuestionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strQuestionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtAddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtAddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtEditedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtEditedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strFlavourText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strFlavourText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strSignificance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strSignificance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bIsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bIsDeleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iQuestionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
