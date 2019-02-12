@@ -34,7 +34,7 @@ namespace AGS.ServerAPI.Utility
             var ip = item.ip;
             var port = item.port;
             var route = $@"/{controller}";
-            return @"http://" + ip + ":" + port + route;
+            return @"https://" + ip + "/icv"  + route;
         }
 
         public static bool PostToModule(AnswerModel answers)
