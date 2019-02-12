@@ -13,7 +13,7 @@ namespace AGS.ServerAPI.Utility
     public class QueryShort
     {
         private static string serverCon = @"Data Source=Lillith\SQLEXPRESS;Initial Catalog=AGS_DB;Integrated Security=True;MultipleActiveResultSets=True";
-
+        // EF
         #region AddClient tblClient
         /// <summary>
         /// Description:    This is a shortcut method for writing new client
@@ -96,7 +96,7 @@ namespace AGS.ServerAPI.Utility
 
         }
         #endregion 
-
+        // EF
         #region AddExperience tblExperienceAnswers
         /// <summary>
         /// Description:    This is a shortcut method for writing new client
@@ -160,7 +160,7 @@ namespace AGS.ServerAPI.Utility
 
         }
         #endregion 
-
+        // EF
         #region AddResult tblResult
         /// <summary>
         /// Description:    This is a shortcut method for writing new client
@@ -170,67 +170,128 @@ namespace AGS.ServerAPI.Utility
         /// <returns>bool upon success or failure</returns>
         public static bool AddResult(AnswerModel value)
         {
+            var db = new MedicalDBContext();
 
-            try
+            var testDataList = new List<string>();
+            var testData = string.Empty;
+            switch (value.ModuleId)
             {
-                using (var connect = new SqlConnection())
-                {
-                    connect.ConnectionString = serverCon;
-
-                    var query = $@"INSERT INTO tblResult (ClientID, ModuleTested, TestData, Result, DateTime)";
-                    query += $@"VALUES (@ClientID, @ModuleTested, @TestData, @Result, @DateTime)";
-                    connect.Open();
-
-                    //make this better
-                    var testDataList = new List<string>();
-                    var testData = string.Empty;
-                    switch (value.ModuleId)
+                case "Vad":
+                    foreach (var dat in value.ParametersVad)
                     {
-
-                        case "Vad":
-                            foreach (var dat in value.ParametersVad)
-                            {
-                                testData += dat + " ";
-                            }
-                            break;
-                        case "Met":
-                            testDataList.Add(value.Age);
-                            testDataList.Add(value.Waist);
-                            testDataList.Add(value.Systolic);
-                            foreach (var dat in testDataList)
-                            {
-                                testData += dat + " ";
-                            }
-                            break;
-                        default:
-                            testData = "No DATA";
-                            break;
+                        testData += dat + " ";
                     }
-
-
-                    using (var cmd = new SqlCommand(query, connect))
+                    break;
+                case "Met":
+                    testDataList.Add(value.Age);
+                    testDataList.Add(value.Waist);
+                    testDataList.Add(value.Systolic);
+                    foreach (var dat in testDataList)
                     {
-                        cmd.Parameters.AddWithValue("@ClientID", value.Said);
-                        cmd.Parameters.AddWithValue("@ModuleTested", value.ModuleId);
-                        cmd.Parameters.AddWithValue("@TestData", testData);
-                        cmd.Parameters.AddWithValue("@Result", PythonShort.PostToPython(value));
-                        cmd.Parameters.AddWithValue("@DateTime", value.CurDateTime);
-                        cmd.ExecuteNonQuery();
+                        testData += dat + " ";
                     }
+                    break;
+                default:
+                    testData = "No DATA";
+                    break;
+            }
 
-                    connect.Close();
-                }
+            var tblResults = new tblResult()
+            {
+                strClientID = value.Said,
+                strModID = value.ModuleId,
+                iResultID = 0,
+                TestData = testData,
+                Result = PythonShort.PostToPython(value),
+                bIsDeleted = false,
+            };
 
+            //Add
+            if (tblResults.iResultID == 0)
+            {
+                tblResults.dtAddedBy = DateTime.Now;
+                tblResults.iAddedBy = -30;
+                tblResults.dtEditedby = DateTime.Now;
+                tblResults.iEditedBy = -30;
+
+                db.tblResult.Add(tblResults);
+                db.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            //Update
+            else
             {
-                Console.WriteLine("Exception occured while writing to table:" + e.Message);
-                throw;
+                tblResults.dtAddedBy = DateTime.Now;
+                tblResults.iAddedBy = -29;
+                tblResults.dtEditedby = DateTime.Now;
+                tblResults.iEditedBy = -29;
+
+                db.Set<tblResult>().AddOrUpdate(tblResults);
+                db.SaveChanges();
+                return true;
             }
+
+
+            //    try
+            //    {
+            //        using (var connect = new SqlConnection())
+            //        {
+            //            connect.ConnectionString = serverCon;
+
+            //            var query = $@"INSERT INTO tblResult (ClientID, ModuleTested, TestData, Result, DateTime)";
+            //            query += $@"VALUES (@ClientID, @ModuleTested, @TestData, @Result, @DateTime)";
+            //            connect.Open();
+
+            //            ////make this better
+            //            //var testDataList = new List<string>();
+            //            //var testData = string.Empty;
+            //            //switch (value.ModuleId)
+            //            //{
+
+            //            //    case "Vad":
+            //            //        foreach (var dat in value.ParametersVad)
+            //            //        {
+            //            //            testData += dat + " ";
+            //            //        }
+            //            //        break;
+            //            //    case "Met":
+            //            //        testDataList.Add(value.Age);
+            //            //        testDataList.Add(value.Waist);
+            //            //        testDataList.Add(value.Systolic);
+            //            //        foreach (var dat in testDataList)
+            //            //        {
+            //            //            testData += dat + " ";
+            //            //        }
+            //            //        break;
+            //            //    default:
+            //            //        testData = "No DATA";
+            //            //        break;
+            //            //}
+
+
+            //            using (var cmd = new SqlCommand(query, connect))
+            //            {
+            //                cmd.Parameters.AddWithValue("@ClientID", value.Said);
+            //                cmd.Parameters.AddWithValue("@ModuleTested", value.ModuleId);
+            //                cmd.Parameters.AddWithValue("@TestData", testData);
+            //                cmd.Parameters.AddWithValue("@Result", PythonShort.PostToPython(value));
+            //                cmd.Parameters.AddWithValue("@DateTime", value.CurDateTime);
+            //                cmd.ExecuteNonQuery();
+            //            }
+
+            //            connect.Close();
+            //        }
+
+            //        return true;
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Console.WriteLine("Exception occured while writing to table:" + e.Message);
+            //        throw;
+            //    }
         }
         #endregion
-
+        // EF
         #region ClientList tblClient
         /// <summary>
         /// 
@@ -238,46 +299,46 @@ namespace AGS.ServerAPI.Utility
         /// <returns>List of PatientInfo Objects</returns>
         public static List<PatientInfo> SearchClient()
         {
-            MedicalDBContext mdbc = new MedicalDBContext();
+            var mdbc = new MedicalDBContext();
             // Empty query variable
             var queList = new List<PatientInfo>();
             // Create the connection
-            using (var connection = new SqlConnection())
+            var lstPatients = mdbc.tblClients.Where(client => client.bIsDeleted != true).ToList();
+            foreach (var patient in lstPatients)
             {
-                var lstPatients = mdbc.tblClients.Where(client => client.bIsDeleted != true).ToList();
-                connection.ConnectionString = serverCon;
-                foreach (var patient in lstPatients)
+                var curPatient = new PatientInfo()
                 {
-                    var curPatient = new PatientInfo()
-                    {
-                        Said = patient.strClientID,
-                        Name = patient.strFirstName,
-                        Surname = patient.strSurname
-                    };
-                    queList.Add(curPatient);
-                }
-
-                //var command = new SqlCommand("SELECT * FROM tblClient", connection);
-                //connection.Open();
-                //using (var reader = command.ExecuteReader())
-                //{
-                //    while (reader.Read())
-                //    {
-                //        var queListBuild = new PatientInfo()
-                //        {
-                //            Said = (string)reader[0],
-                //            Name = (string)reader[1],
-                //            Surname = (string)reader[2]
-                //        };
-                //        queList.Add(queListBuild);
-                //    }
-                //    connection.Close();
-                //}
+                    Said = patient.strClientID,
+                    Name = patient.strFirstName,
+                    Surname = patient.strSurname
+                };
+                queList.Add(curPatient);
             }
+            //using (var connection = new SqlConnection())
+            //{
+            //    connection.ConnectionString = serverCon;
+
+            //    //var command = new SqlCommand("SELECT * FROM tblClient", connection);
+            //    //connection.Open();
+            //    //using (var reader = command.ExecuteReader())
+            //    //{
+            //    //    while (reader.Read())
+            //    //    {
+            //    //        var queListBuild = new PatientInfo()
+            //    //        {
+            //    //            Said = (string)reader[0],
+            //    //            Name = (string)reader[1],
+            //    //            Surname = (string)reader[2]
+            //    //        };
+            //    //        queList.Add(queListBuild);
+            //    //    }
+            //    //    connection.Close();
+            //    //}
+            //}
             return queList;
         }
         #endregion
-
+        // EF
         #region SearchClient tblClient
         /// <summary>
         /// Description:    SQL shortcut for checking if a client already exists for creation on the API
@@ -335,7 +396,7 @@ namespace AGS.ServerAPI.Utility
             return curPatient;
         }
         #endregion
-
+        // EF
         #region SearchModule tblModules POST()
         /// <summary>
         /// 
@@ -369,7 +430,7 @@ namespace AGS.ServerAPI.Utility
 
         }
         #endregion
-
+        // EF
         #region ModuleList tblModules GET(){id}
         /// <summary>
         /// 
@@ -419,7 +480,7 @@ namespace AGS.ServerAPI.Utility
             return queList;
         }
         #endregion
-
+        // EF
         #region UxSurveyList tblTechExperience/tblUserExperience GET(){id}
         /// <summary>
         /// 
@@ -448,23 +509,23 @@ namespace AGS.ServerAPI.Utility
                     }
                     break;
                 case "Ux":
-                {
-                    var Questions = mdbc.tblUserExperience.Where(question => question.bIsDeleted != true).ToList();
-                    foreach (var item in Questions)
                     {
-                        var survey = new UxSurvey()
+                        var Questions = mdbc.tblUserExperience.Where(question => question.bIsDeleted != true).ToList();
+                        foreach (var item in Questions)
                         {
-                            Question = item.strQuestion,
-                            Left = item.strUxQuestionL,
-                            Slider = item.iUxQuestionM,
-                            Right = item.strUxQuestionR
-                        };
-                        lstQuestions.Add(survey);
+                            var survey = new UxSurvey()
+                            {
+                                Question = item.strQuestion,
+                                Left = item.strUxQuestionL,
+                                Slider = item.iUxQuestionM,
+                                Right = item.strUxQuestionR
+                            };
+                            lstQuestions.Add(survey);
+                        }
                     }
-                }
                     break;
             }
-            
+
             return lstQuestions;
         }
         #endregion
@@ -504,7 +565,7 @@ namespace AGS.ServerAPI.Utility
             return modList;
         }
         #endregion
-
+        //EF
         #region ResultList tblModules GET(){id}
         /// <summary>
         /// 

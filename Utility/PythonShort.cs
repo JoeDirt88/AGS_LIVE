@@ -66,8 +66,7 @@ namespace AGS.ServerAPI.Utility
                         var postData = new StringContent(JsonConvert.SerializeObject(pModel), Encoding.UTF8, medType);
                         var response = client.PostAsync(Route(module), postData).Result;
                         if (response.IsSuccessStatusCode != true)
-                            throw new Exception(
-                                $"Response from server API Failed for POST {Route(module)}, check IP config");
+                            throw new Exception($"Response from server API Failed for POST {Route(module)}, check IP config");
                         retString = JsonConvert.DeserializeObject<string>(response.Content.ReadAsStringAsync().Result);
 
                     }
