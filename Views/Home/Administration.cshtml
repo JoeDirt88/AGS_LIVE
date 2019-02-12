@@ -46,11 +46,17 @@
                 <div class="row">
                     <div class="card-body col-12 bg-white">
                         <div class="row mb-1 hm match-height">
-                            <div class="col-6">
-                                <h6>Current IP/Domain: @item.ip</h6>
+                            <div class="col-4">
+                                <h6>Current full URI:</h6>
                             </div>
-                            <div class="col-6">
-                                <h6>Current Port: @item.port</h6>
+                            <div class="col-8">
+                                @{
+                                    var ip = item.ip;
+                                    var port = item.port;
+                                    var route = @"/{controller}";
+                                    var final = @"http://" + ip + ":" + port + route;
+                                }
+                                <h6>@final</h6>
                             </div>
                         </div>
                         @using (Html.BeginForm("Administrate", "Home", FormMethod.Post, new { @id = "frmPortManager", @name = "frmPortManager" }))
