@@ -146,12 +146,33 @@
 <h1>Welcome to the home of AG Softworks</h1>
 <hr />
 <body>
-    <div class="row match-height">
-        <div class="col-6">
-            @Html.Partial("~/Views/Partials/_UserStats.cshtml", allStats)
-        </div>
-        <div class="col-6">
-            @Html.Partial("~/Views/Partials/_SurveyStats.cshtml", allStats)
+<div class="row match-height mb-5">
+    <div class="col-6">
+        @Html.Partial("~/Views/Partials/_UserStats.cshtml", allStats)
+    </div>
+    <div class="col-6">
+        @Html.Partial("~/Views/Partials/_SurveyStats.cshtml", allStats)
+    </div>
+</div>
+<hr />
+<div class="row match-height">
+    <div class="col-3">
+    </div>
+    <div class="card bg-success col-6">
+        <div class="row match-height">
+            <div class="col-2">
+                <i class="fab fa-android fa-2x"></i>
+            </div>
+            <div class="col-10">
+                <a href="https://drive.google.com/open?id=1owJuRraxtJLtpx73YJ-w6J64FXzSmnwx">
+                    <h4 style="color: black">Current link for the AGS Medical APK</h4>
+                </a>
+            </div>
+
         </div>
     </div>
+    <div class="col-3">
+    </div>
+</div>
+
 </body>

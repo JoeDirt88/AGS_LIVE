@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web.Mvc;
 using AGS.ServerAPI.Models;
 using AGS.ServerAPI.Model_Managers;
@@ -8,6 +9,7 @@ namespace AGS.ServerAPI.Controllers
 {
     public class HomeController : Controller
     {
+        public string strQuoteTempPath = @"c:/ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json";
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -21,7 +23,13 @@ namespace AGS.ServerAPI.Controllers
             if (portManager.ip != null && portManager.port != null)
             {
                 var json = JsonConvert.SerializeObject(portManager);
-                System.IO.File.WriteAllText(@"c:/ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
+                
+                if (System.IO.File.Exists(strQuoteTempPath))
+                {
+                    System.IO.File.SetAttributes(strQuoteTempPath, FileAttributes.Normal);
+                    System.IO.File.Delete(strQuoteTempPath);
+                }
+                System.IO.File.WriteAllText(strQuoteTempPath, json);
             }
             return View(portManager);
         }
@@ -33,9 +41,15 @@ namespace AGS.ServerAPI.Controllers
             if (portManager.ip != null && portManager.port != null)
             {
                 var json = JsonConvert.SerializeObject(portManager);
-                System.IO.File.WriteAllText(@"c:/ftproot/Domains/AGS_joey/Connection_Config/ConnectionConfig.json", json);
+
+                if (System.IO.File.Exists(strQuoteTempPath))
+                {
+                    System.IO.File.SetAttributes(strQuoteTempPath, FileAttributes.Normal);
+                    System.IO.File.Delete(strQuoteTempPath);
+                }
+                System.IO.File.WriteAllText(strQuoteTempPath, json);
             }
-            return RedirectToAction("Administration","Home",portManager);
+            return RedirectToAction("Administration", "Home", portManager);
         }
     }
 }
