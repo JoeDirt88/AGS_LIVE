@@ -31,7 +31,7 @@
     <Property Name="strPhone" Type="varchar" MaxLength="10" />
     <Property Name="strOccupation" Type="varchar" MaxLength="50" />
     <Property Name="iExperienceTypeID" Type="int" Nullable="false" />
-    <Property Name="strAnswers" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="strAnswers" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="iAverage" Type="float" Nullable="false" />
     <Property Name="bIsDeleted" Type="bit" Nullable="false" />
   </EntityType>

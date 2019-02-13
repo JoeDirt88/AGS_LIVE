@@ -31,7 +31,7 @@
     <Property Name="strPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="strOccupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="iExperienceTypeID" Type="Int32" Nullable="false" />
-    <Property Name="strAnswers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strAnswers" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="iAverage" Type="Double" Nullable="false" />
     <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="tblExperienceTypes" Relationship="Self.FK_tblExperienceAnswers_tblExperienceTypes" FromRole="tblExperienceAnswers" ToRole="tblExperienceTypes" />
