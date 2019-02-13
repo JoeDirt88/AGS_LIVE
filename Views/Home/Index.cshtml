@@ -153,7 +153,9 @@
         text-align: center;
         vertical-align: middle;
     }
-
+    .md {
+        margin-left:25px;
+    }
     .bg-ag {
         background: #a4c639;
         color: black;
@@ -184,17 +186,17 @@
 <hr />
 <body>
     <div class="row match-height mb-5">
-        <div class="col-6">
+        <div class="col-xl-6 col-lg-6 col-md-4 col-sm 3">
             @Html.Partial("~/Views/Partials/_UserStats.cshtml", allStats)
         </div>
-        <div class="col-6">
+        <div class="col-xl-6 col-lg-6 col-md-4 col-sm 3">
             @Html.Partial("~/Views/Partials/_SurveyStats.cshtml", allStats)
         </div>
     </div>
     <hr />
-    <div class="row match-height">
-        <div class="col-3">
-        </div>
+    <div class="row match-height md">
+        @*<div class="col-3">
+        </div>*@
         <div class="col-6">
             <a class="front" href="https://drive.google.com/open?id=1owJuRraxtJLtpx73YJ-w6J64FXzSmnwx">
                 <div class="row">
@@ -202,15 +204,13 @@
                         <i class="fab fa-android bg-ag fa-3x rnd"></i>
                     </div>
                     <div class="col-11 bg-ac">
-
                         <h4 class="al">Current link for the AGS Medical APK</h4>
-
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-3">
-        </div>
+        @*<div class="col-3">
+        </div>*@
     </div>
 
 </body>
