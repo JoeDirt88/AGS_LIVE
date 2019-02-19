@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using AGS.ServerAPI.Model_Managers;
@@ -71,6 +72,7 @@ namespace AGS.ServerAPI.Controllers
             }
         }
 
+        
         public ActionResult Logout()
         {
             Session.Remove("clsUser");

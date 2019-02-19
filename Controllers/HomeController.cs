@@ -51,5 +51,14 @@ namespace AGS.ServerAPI.Controllers
             }
             return RedirectToAction("Administration", "Home", portManager);
         }
+
+        public ActionResult Download(string fileName)
+        {
+            if (Path.GetExtension(fileName) != ".apk")
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.Forbidden);
+            var fullPath = Path.Combine(Server.MapPath("~/Downloads/"), fileName);
+            return File(fullPath, "application/vnd.android.package-archive");
+        }
+
     }
 }

@@ -152,6 +152,7 @@
         height: 60px;
         text-align: center;
         vertical-align: middle;
+        z-index: 9;
     }
     .md {
         margin-left:25px;
@@ -167,18 +168,18 @@
         line-height: 30px;
         height: 35px;
         margin-top: 12.5px;
-        z-index: -1;
         border-radius: 17.5px;
+        z-index: 8;
     }
 
     .al {
         color: black;
         margin-left: 30px;
         margin-top: 2px;
+        z-index: 10;
     }
-
     .front {
-        z-index: 1;
+        z-index: 9;
     }
 </style>
 
@@ -198,16 +199,20 @@
         @*<div class="col-3">
         </div>*@
         <div class="col-6">
-            <a class="front" href="https://drive.google.com/open?id=1owJuRraxtJLtpx73YJ-w6J64FXzSmnwx">
-                <div class="row">
-                    <div class="col-1">
-                        <i class="fab fa-android bg-ag fa-3x rnd"></i>
-                    </div>
-                    <div class="col-11 bg-ac">
-                        <h4 class="al">Current link for the AGS Medical APK</h4>
-                    </div>
+            @{
+                var path = Server.MapPath("~/Downloads/");
+                var directoryInfo = new DirectoryInfo(path);
+                var file = directoryInfo.GetFiles("*.apk").FirstOrDefault();
+            }
+            
+            <div class="row">
+                <div class="col-1 front">
+                    <i class="fab fa-android bg-ag fa-3x rnd"></i>
                 </div>
-            </a>
+                <div class="col-11 bg-ac">
+                    <h4 class="al"> @Html.ActionLink("Current link for the AGS Medical APK", "Download", new { fileName = "AGS.Medical.apk", @class = "front" })</h4>
+                </div>
+            </div>
         </div>
         @*<div class="col-3">
         </div>*@
